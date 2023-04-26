@@ -1,11 +1,11 @@
-import { arrayClone, compileAndroidCode, getData, reverseString, sum } from ".";
+import { arrayClone, getData, reverseString, showUserName, sum } from "../jest";
 
-const init = () => {
-    console.log("initial");
-};
-const close = () => {
-    console.log("close");
-};
+// const init = () => {
+//     console.log("initial");
+// };
+// const close = () => {
+//     console.log("close");
+// };
 // beforeEach(() => init());
 // afterEach(() => close());
 // beforeAll(() => init());
@@ -28,8 +28,14 @@ describe("Cheking names", () => {
     });
 });
 
-test("should add 2 numbers", () => {
-    expect(sum(1, 2)).toBe(3);
+describe("sum function", () => {
+    test("should add 2 numbers", () => {
+        expect(sum(1, 2)).toBe(3);
+    });
+
+    test("should add 2 numbers", () => {
+        expect(sum(-3, 10)).toBe(7);
+    });
 });
 
 test("should equal another array", () => {
@@ -80,4 +86,20 @@ test("should reverse string", () => {
     const result = "sba";
     expect(reverseString).toBeDefined();
     expect(reverseString("abs")).toBe(result);
+});
+
+//Integration Tests
+
+describe("integration between showUserName and findUserById", () => {
+    test("should return correct user name", () => {
+        expect(showUserName(1)).toEqual("John");
+    });
+
+    test("should return correct user name", () => {
+        expect(showUserName(2)).toEqual("Jane");
+    });
+
+    test("should return correct user name", () => {
+        expect(showUserName(3)).toEqual("Joe");
+    });
 });

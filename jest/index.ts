@@ -21,3 +21,22 @@ export async function getData() {
 export function reverseString(str: string) {
     return str.split("").reverse().join("");
 }
+
+export function showUserName(userId: number) {
+    interface IUser {
+        id: number;
+        name: string;
+    }
+
+    const USERS: IUser[] = [
+        { id: 1, name: "John" },
+        { id: 2, name: "Jane" },
+        { id: 3, name: "Joe" },
+    ];
+
+    function findUserByUserId(id: number) {
+        return USERS.find((user) => user.id === id);
+    }
+
+    return findUserByUserId(userId).name;
+}
